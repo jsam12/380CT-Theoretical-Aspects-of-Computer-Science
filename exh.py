@@ -7,8 +7,8 @@ from HTMLParser import HTMLParser
 import copy
 
 num_clause = 5
-num_var_in_clause = 10
 num_var = 5
+num_var_in_clause = 3
 
 
 def literals_list():
@@ -38,127 +38,21 @@ def generate_cnf():
         if check_if_not_exist_in_clause == 1:
             # Append as num of var in clause increases.
             rand_int = random.randint(0, num_var_in_clause)
-            check_not_position = random.randint(0, 9)
+            check_not_position = random.randint(0, 2)
             # Change (0,2) if number of variables in clause increases
             if check_not_position == 0:
                 temp.append("~")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
                 temp.append("")
                 temp.append("")
             elif check_not_position == 1:
                 temp.append("")
                 temp.append("~")
                 temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
             elif check_not_position == 2:
                 temp.append("")
                 temp.append("")
                 temp.append("~")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-            elif check_not_position == 3:
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("~")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-            elif check_not_position == 4:
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("~")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-            elif check_not_position == 5:
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("~")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-            elif check_not_position == 6:
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("~")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-            elif check_not_position == 7:
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("~")
-                temp.append("")
-                temp.append("")
-            elif check_not_position == 8:
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("~")
-                temp.append("")
-            elif check_not_position == 9:
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("")
-                temp.append("~")
-
         else:
-            temp.append("")
-            temp.append("")
-            temp.append("")
-            temp.append("")
-            temp.append("")
-            temp.append("")
-            temp.append("")
             temp.append("")
             temp.append("")
             temp.append("")
@@ -226,19 +120,6 @@ def sub_int_into_alpha(cnf_alpha, literals_list):
                 if x_num.group(1) == "5":
                     cnf_alpha[i][x] = re.sub(r"x\d+", str(literals_list["x5"]), str(cnf_alpha[i][x]) )
 
-                if x_num.group(1) == "6":
-                    cnf_alpha[i][x] = re.sub(r"x\d+", str(literals_list["x5"]), str(cnf_alpha[i][x]) )
-                if x_num.group(1) == "7":
-                    cnf_alpha[i][x] = re.sub(r"x\d+", str(literals_list["x5"]), str(cnf_alpha[i][x]) )
-
-                if x_num.group(1) == "8":
-                    cnf_alpha[i][x] = re.sub(r"x\d+", str(literals_list["x5"]), str(cnf_alpha[i][x]) )
-                if x_num.group(1) == "9":
-                    cnf_alpha[i][x] = re.sub(r"x\d+", str(literals_list["x5"]), str(cnf_alpha[i][x]) )
-
-                if x_num.group(1) == "10":
-                    cnf_alpha[i][x] = re.sub(r"x\d+", str(literals_list["x5"]), str(cnf_alpha[i][x]) )
-
             not_exist = re.search(r"~(\d+)", cnf_alpha[i][x])
             if not_exist is not None: #Increment as variables increases
                 if not_exist.group(1) == "1":
@@ -262,12 +143,7 @@ if __name__ == '__main__':
         "x2":None,
         "x3":None,
         "x4":None,
-        "x5":None,
-        "x6":None,
-        "x7":None,
-        "x8":None,
-        "x9":None,
-        "x10":None
+        "x5":None
     }
     key_list = []
     for i in literal_dict:
@@ -289,12 +165,12 @@ if __name__ == '__main__':
         # print(algo)
         verifier_list = []
         for i in algo:
-            verifier = int(i[0]) or int(i[1]) or int(i[2]) or int(i[3]) or int(i[4]) or int(i[5]) or int(i[6]) or int(i[7]) or int(i[8]) or int(i[9])   # Increase when vareiables in clause increases.
+            verifier = int(i[0]) or int(i[1]) or int(i[2])   # Increase when vareiables in clause increases.
             verifier_list.append(verifier)
         # print(verifier_list)
 
 
-        sat = verifier_list[0] and verifier_list[1] and verifier_list[2] #and verifier_list[3] and verifier_list[4] and verifier_list[5] and verifier_list[6] and verifier_list[7] and verifier_list[8] and verifier_list[9] and verifier_list[10] and verifier_list[11] and verifier_list[12] and verifier_list[13] and verifier_list[14] and verifier_list[15] and verifier_list[16] and verifier_list[17] and verifier_list[18] and verifier_list[19] and verifier_list[20] and verifier_list[21] and verifier_list[22] and verifier_list[23] # Increases when clause increases.
+        sat = verifier_list[0] and verifier_list[1] and verifier_list[2] and verifier_list[3] and verifier_list[4] # Increases when clause increases.
 
         if sat == 1:
             print("CNF : ( {} or {} or {} ) and ( {} or {} or {} ) and ( {} or {} or {} ) and ( {} or {} or {} ) and ( {} or {} or {} ) >>> {}".format(algo[0][0],algo[0][1], algo[0][2], algo[1][0], algo[1][1], algo[1][2], algo[2][0], algo[2][1], algo[2][2], algo[3][0], algo[3][1], algo[3][2], algo[4][0], algo[4][1], algo[4][2] , True) )

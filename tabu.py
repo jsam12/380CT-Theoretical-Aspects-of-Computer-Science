@@ -4,7 +4,7 @@ from datetime import datetime
 from HTMLParser import HTMLParser
 import copy 
 
-num_clause = 24
+num_clause = 5
 num_var = 5
 num_var_in_clause = 3
 
@@ -147,7 +147,7 @@ if __name__ == '__main__':
         # print(verifier_list)
 
 
-        sat = verifier_list[0] and verifier_list[1] and verifier_list[2] and verifier_list[3] and verifier_list[4] and verifier_list[5] and verifier_list[6] and verifier_list[7] and verifier_list[8] and verifier_list[9] and verifier_list[10] and verifier_list[11] and verifier_list[12] and verifier_list[13] and verifier_list[14] and verifier_list[15] and verifier_list[16] and verifier_list[17] and verifier_list[18] and verifier_list[19] and verifier_list[20] and verifier_list[21] and verifier_list[22] and verifier_list[23] # Increases as clause increases
+        sat = verifier_list[0] and verifier_list[1] and verifier_list[2] and verifier_list[3] and verifier_list[4] # Increases as clause increases
         if sat == 1:
             print("CNF : ( {} or {} or {} ) and ( {} or {} or {} ) and ( {} or {} or {} ) and ( {} or {} or {} ) and ( {} or {} or {} ) >>> {}".format(algo[0][0],algo[0][1], algo[0][2], algo[1][0], algo[1][1], algo[1][2], algo[2][0], algo[2][1], algo[2][2] , algo[3][0] , algo[3][1] , algo[3][2] , algo[4][0] , algo[4][1] , algo[4][2] , True) )
             tabu_search = False
